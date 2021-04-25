@@ -1,4 +1,4 @@
-# Cloud-Security-Blockchain-Demo
+#@ Cloud Security Blockchain Demo
 
 ##### Running the app
 
