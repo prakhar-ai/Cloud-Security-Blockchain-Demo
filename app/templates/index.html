@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block content %}
+
+	<a href = '/'>
+ <div class = "ui container">
+		<button class = "ui basic black button">Refresh blockchain</button>
+	</a>
+  </br>
+  </br>
+	<form action = '/submit' id = 'textform' method = 'post' class = "ui form">
+  <div class="field">
+   <label>Author: </label>
+		<input type = 'text' name = 'user' placeholder = 'Author'>
+  </div>
+
+    <div class="field">
+    <label>Data to store: </label>
+    <textarea spellcheck="false" name = 'data'></textarea>
+	</div>
+
+		<input class ="ui violet button" type = 'submit' value = 'Submit transaction'> 
+	</form>
+	<a href = '{{host}}/confirm_pending_transactions' target = '_blank'>
+		<button class = "ui basic black button" >Request block confirmation</button>
+	</a>
+
+	<div class = 'blockchain' style="margin-top: 2em;">
+
+		
+		<div class="ui comments">
+			<h3 class="ui dividing header">Blockchain</h3>
+			{% for post in ordered_tx %}
+			<div class="comment">
+
+			  <div class="content">
+				<a class="author">{{ post.user }}</a>
+				<div class="metadata">
+				  <span class="date">{{ time(post.timestamp) }}</span>
+				</div>
+				<div class="text">
+					{{ post.data }}
+				</div>
+			  </div>
+			</div>
+			{% endfor %}
+		</div>
+
+
+
+	</div>
+</div>
+{% endblock %}
